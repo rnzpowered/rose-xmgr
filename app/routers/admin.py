@@ -137,7 +137,8 @@ def get_admins(
 @router.post("/admin/{username}/users/disable", responses={403: responses._403, 404: responses._404})
 def disable_all_active_users(
     dbadmin: Admin = Depends(get_admin_by_username),
-    db: Session = Depends(get_db), admin: Admin = Depends(Admin.check_sudo_admin)
+    db: Session = Depends(get_db),
+    admin: Admin = Depends(Admin.check_sudo_admin),
 ):
     """Disable all active users under a specific admin"""
     crud.disable_all_active_users(db=db, admin=dbadmin)
@@ -152,7 +153,8 @@ def disable_all_active_users(
 @router.post("/admin/{username}/users/activate", responses={403: responses._403, 404: responses._404})
 def activate_all_disabled_users(
     dbadmin: Admin = Depends(get_admin_by_username),
-    db: Session = Depends(get_db), admin: Admin = Depends(Admin.check_sudo_admin)
+    db: Session = Depends(get_db),
+    admin: Admin = Depends(Admin.check_sudo_admin),
 ):
     """Activate all disabled users under a specific admin"""
     crud.activate_all_disabled_users(db=db, admin=dbadmin)
@@ -172,7 +174,7 @@ def activate_all_disabled_users(
 def reset_admin_usage(
     dbadmin: Admin = Depends(get_admin_by_username),
     db: Session = Depends(get_db),
-    current_admin: Admin = Depends(Admin.check_sudo_admin)
+    current_admin: Admin = Depends(Admin.check_sudo_admin),
 ):
     """Resets usage of admin."""
     return crud.reset_admin_usage(db, dbadmin)
@@ -184,8 +186,7 @@ def reset_admin_usage(
     responses={403: responses._403},
 )
 def get_admin_usage(
-    dbadmin: Admin = Depends(get_admin_by_username),
-    current_admin: Admin = Depends(Admin.check_sudo_admin)
+    dbadmin: Admin = Depends(get_admin_by_username), current_admin: Admin = Depends(Admin.check_sudo_admin)
 ):
     """Retrieve the usage of given admin."""
     return dbadmin.users_usage

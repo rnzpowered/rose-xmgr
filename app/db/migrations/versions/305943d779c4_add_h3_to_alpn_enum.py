@@ -5,13 +5,13 @@ Revises: 31f92220c0d0
 Create Date: 2024-07-03 19:27:15.282711
 
 """
-from alembic import op
-import sqlalchemy as sa
 
+import sqlalchemy as sa
+from alembic import op
 
 # revision identifiers, used by Alembic.
-revision = '305943d779c4'
-down_revision = '31f92220c0d0'
+revision = "305943d779c4"
+down_revision = "31f92220c0d0"
 branch_labels = None
 depends_on = None
 
@@ -32,14 +32,7 @@ temp_type = sa.Enum(*new_values, name=temp_enum_name)
 # Describing of table
 table_name = "hosts"
 column_name = "alpn"
-temp_table = sa.sql.table(
-    table_name,
-    sa.Column(
-        column_name,
-        new_type,
-        nullable=False
-    )
-)
+temp_table = sa.sql.table(table_name, sa.Column(column_name, new_type, nullable=False))
 
 
 def upgrade():
@@ -54,7 +47,7 @@ def upgrade():
             existing_type=old_type,
             type_=temp_type,
             existing_nullable=False,
-            postgresql_using=f"{column_name}::text::{temp_enum_name}"
+            postgresql_using=f"{column_name}::text::{temp_enum_name}",
         )
 
     # remove old enum, create new enum
@@ -69,7 +62,7 @@ def upgrade():
             existing_type=temp_type,
             type_=new_type,
             existing_nullable=False,
-            postgresql_using=f"{column_name}::text::{enum_name}"
+            postgresql_using=f"{column_name}::text::{enum_name}",
         )
 
     # remove temp enum
@@ -81,12 +74,7 @@ def downgrade():
     # before downgrading from new enum to old one,
     # we should replace new value from new enum with
     # somewhat of old values from old enum
-    update_query = (
-        temp_table
-        .update()
-        .where(temp_table.c.alpn.in_(downgrade_from))
-        .values(alpn=downgrade_to)
-    )
+    update_query = temp_table.update().where(temp_table.c.alpn.in_(downgrade_from)).values(alpn=downgrade_to)
     op.execute(update_query)
 
     temp_type.create(op.get_bind(), checkfirst=False)
@@ -97,7 +85,7 @@ def downgrade():
             existing_type=new_type,
             type_=temp_type,
             existing_nullable=False,
-            postgresql_using=f"{column_name}::text::{temp_enum_name}"
+            postgresql_using=f"{column_name}::text::{temp_enum_name}",
         )
 
     new_type.drop(op.get_bind(), checkfirst=False)
@@ -109,7 +97,7 @@ def downgrade():
             existing_type=temp_type,
             type_=old_type,
             existing_nullable=False,
-            postgresql_using=f"{column_name}::text::{enum_name}"
+            postgresql_using=f"{column_name}::text::{enum_name}",
         )
 
     temp_type.drop(op.get_bind(), checkfirst=False)

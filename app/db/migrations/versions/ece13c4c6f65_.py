@@ -5,13 +5,13 @@ Revises: d02dcfbf1517, b3378dc6de01
 Create Date: 2023-02-23 14:55:19.953972
 
 """
-from alembic import op
-import sqlalchemy as sa
 
+import sqlalchemy as sa
+from alembic import op
 
 # revision identifiers, used by Alembic.
-revision = 'ece13c4c6f65'
-down_revision = ('d02dcfbf1517', 'b3378dc6de01')
+revision = "ece13c4c6f65"
+down_revision = ("d02dcfbf1517", "b3378dc6de01")
 branch_labels = None
 depends_on = None
 

@@ -26,7 +26,7 @@ class Admin(BaseModel):
     users_usage: Optional[int] = None
     model_config = ConfigDict(from_attributes=True)
 
-    @field_validator("users_usage",  mode='before')
+    @field_validator("users_usage", mode="before")
     def cast_to_int(cls, v):
         if v is None:  # Allow None values
             return v
@@ -42,10 +42,10 @@ class Admin(BaseModel):
         if not payload:
             return
 
-        if payload['username'] in SUDOERS and payload['is_sudo'] is True:
-            return cls(username=payload['username'], is_sudo=True)
+        if payload["username"] in SUDOERS and payload["is_sudo"] is True:
+            return cls(username=payload["username"], is_sudo=True)
 
-        dbadmin = crud.get_admin(db, payload['username'])
+        dbadmin = crud.get_admin(db, payload["username"])
         if not dbadmin:
             return
 
@@ -58,9 +58,7 @@ class Admin(BaseModel):
         return cls.model_validate(dbadmin)
 
     @classmethod
-    def get_current(cls,
-                    db: Session = Depends(get_db),
-                    token: str = Depends(oauth2_scheme)):
+    def get_current(cls, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
         admin = cls.get_admin(token, db)
         if not admin:
             raise HTTPException(
@@ -71,9 +69,7 @@ class Admin(BaseModel):
         return admin
 
     @classmethod
-    def check_sudo_admin(cls,
-                         db: Session = Depends(get_db),
-                         token: str = Depends(oauth2_scheme)):
+    def check_sudo_admin(cls, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
         admin = cls.get_admin(token, db)
         if not admin:
             raise HTTPException(
@@ -82,10 +78,7 @@ class Admin(BaseModel):
                 headers={"WWW-Authenticate": "Bearer"},
             )
         if not admin.is_sudo:
-            raise HTTPException(
-                status_code=status.HTTP_403_FORBIDDEN,
-                detail="You're not allowed"
-            )
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="You're not allowed")
         return admin
 
 
