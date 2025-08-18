@@ -1,4 +1,4 @@
-<h1 align="center"/>Marzban</h1>
+<h1 align="center"/>rose-xmgr</h1>
 
 <p align="center">Бекэнд для управления нодами xray-core, основанный на Marzban</p>
 <br/>
