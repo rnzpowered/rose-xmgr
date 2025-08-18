@@ -7,7 +7,7 @@ import uvicorn
 from cryptography import x509
 from cryptography.hazmat.backends import default_backend
 
-from app import app, logger
+from xmgr import app, logger
 from config import (
     DEBUG,
     UVICORN_HOST,
@@ -100,7 +100,7 @@ Then, navigate to {click.style(f"http://127.0.0.1:{UVICORN_PORT}", bold=True)} o
 
     try:
         uvicorn.run(
-            "main:app", **bind_args, workers=1, reload=DEBUG, log_level=logging.DEBUG if DEBUG else logging.INFO
+            "main:xmgr", **bind_args, workers=1, reload=DEBUG, log_level=logging.DEBUG if DEBUG else logging.INFO
         )
     except FileNotFoundError:  # to prevent error on removing unix sock
         pass

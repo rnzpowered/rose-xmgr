@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from alembic import op
 from sqlalchemy.dialects import mysql
 
-from app.utils.crypto import generate_certificate
+from xmgr.utils.crypto import generate_certificate
 
 # revision identifiers, used by Alembic.
 revision = "7a0dbb8a2f65"
