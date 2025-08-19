@@ -1,14 +1,9 @@
 import re
 
-from distutils.version import LooseVersion
 from fastapi import APIRouter, Depends, Header, Path, Request, Response
 from fastapi.responses import HTMLResponse
+from looseversion import LooseVersion
 
-from xmgr.db import Session, crud, get_db
-from xmgr.dependencies import get_validated_sub, validate_dates
-from xmgr.models.user import SubscriptionUserResponse, UserResponse
-from xmgr.subscription.share import encode_title, generate_subscription
-from xmgr.templates import render_template
 from config import (
     SUB_PROFILE_TITLE,
     SUB_SUPPORT_URL,
@@ -21,6 +16,11 @@ from config import (
     USE_CUSTOM_JSON_FOR_V2RAYNG,
     XRAY_SUBSCRIPTION_PATH,
 )
+from xmgr.db import Session, crud, get_db
+from xmgr.dependencies import get_validated_sub, validate_dates
+from xmgr.models.user import SubscriptionUserResponse, UserResponse
+from xmgr.subscription.share import encode_title, generate_subscription
+from xmgr.templates import render_template
 
 client_config = {
     "clash-meta": {"config_format": "clash-meta", "media_type": "text/yaml", "as_base64": False, "reverse": False},
