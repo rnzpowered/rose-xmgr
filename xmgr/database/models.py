@@ -21,15 +21,15 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.sql.expression import select, text
 
 from xmgr import xray
-from xmgr.db.base import Base
-from xmgr.models.node import NodeStatus
-from xmgr.models.proxy import (
+from xmgr.database.base import Base
+from xmgr.schemas.node import NodeStatus
+from xmgr.schemas.proxy import (
     ProxyHostALPN,
     ProxyHostFingerprint,
     ProxyHostSecurity,
     ProxyTypes,
 )
-from xmgr.models.user import ReminderType, UserDataLimitResetStrategy, UserStatus
+from xmgr.schemas.user import ReminderType, UserDataLimitResetStrategy, UserStatus
 
 
 class Admin(Base):

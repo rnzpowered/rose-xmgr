@@ -3,11 +3,11 @@ from typing import Dict, List, Union
 from fastapi import APIRouter, Depends, HTTPException
 
 from xmgr import __version__, xray
-from xmgr.db import Session, crud, get_db
-from xmgr.models.admin import Admin
-from xmgr.models.proxy import ProxyHost, ProxyInbound, ProxyTypes
-from xmgr.models.system import SystemStats
-from xmgr.models.user import UserStatus
+from xmgr.database import Session, crud, get_db
+from xmgr.schemas.admin import Admin
+from xmgr.schemas.proxy import ProxyHost, ProxyInbound, ProxyTypes
+from xmgr.schemas.system import SystemStats
+from xmgr.schemas.user import UserStatus
 from xmgr.utils import responses
 from xmgr.utils.system import cpu_usage, memory_usage, realtime_bandwidth
 

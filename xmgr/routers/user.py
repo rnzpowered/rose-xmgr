@@ -5,10 +5,10 @@ from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Query
 from sqlalchemy.exc import IntegrityError
 
 from xmgr import logger, xray
-from xmgr.db import Session, crud, get_db
+from xmgr.database import Session, crud, get_db
 from xmgr.dependencies import get_expired_users_list, get_validated_user, validate_dates
-from xmgr.models.admin import Admin
-from xmgr.models.user import (
+from xmgr.schemas.admin import Admin
+from xmgr.schemas.user import (
     UserCreate,
     UserModify,
     UserResponse,

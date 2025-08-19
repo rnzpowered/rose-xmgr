@@ -13,7 +13,7 @@ from config import JWT_ACCESS_TOKEN_EXPIRE_MINUTES
 
 @lru_cache(maxsize=None)
 def get_secret_key():
-    from xmgr.db import GetDB, get_jwt_secret_key
+    from xmgr.database import GetDB, get_jwt_secret_key
 
     with GetDB() as db:
         return get_jwt_secret_key(db)

@@ -3,8 +3,9 @@ from typing import TYPE_CHECKING
 
 from sqlalchemy.orm import Session
 
+from config import JOB_REVIEW_USERS_INTERVAL, NOTIFY_DAYS_LEFT, NOTIFY_REACHED_USAGE_PERCENT, WEBHOOK_ADDRESS
 from xmgr import logger, scheduler, xray
-from xmgr.db import (
+from xmgr.database import (
     GetDB,
     get_notification_reminder,
     get_users,
@@ -12,13 +13,12 @@ from xmgr.db import (
     start_user_expire,
     update_user_status,
 )
-from xmgr.models.user import ReminderType, UserResponse, UserStatus
+from xmgr.schemas.user import ReminderType, UserResponse, UserStatus
 from xmgr.utils import report
 from xmgr.utils.helpers import calculate_expiration_days, calculate_usage_percent
-from config import JOB_REVIEW_USERS_INTERVAL, NOTIFY_DAYS_LEFT, NOTIFY_REACHED_USAGE_PERCENT, WEBHOOK_ADDRESS
 
 if TYPE_CHECKING:
-    from xmgr.db.models import User
+    from xmgr.database.models import User
 
 
 def add_notification_reminders(db: Session, user: "User", now: datetime = datetime.utcnow()) -> None:

@@ -3,7 +3,7 @@ from typing import Dict, List, Optional
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from xmgr import xray
-from xmgr.models.proxy import ProxyTypes
+from xmgr.schemas.proxy import ProxyTypes
 
 
 class UserTemplate(BaseModel):

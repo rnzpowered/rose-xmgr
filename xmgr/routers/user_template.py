@@ -3,10 +3,10 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.exc import IntegrityError
 
-from xmgr.db import Session, crud, get_db
+from xmgr.database import Session, crud, get_db
 from xmgr.dependencies import get_user_template
-from xmgr.models.admin import Admin
-from xmgr.models.user_template import UserTemplateCreate, UserTemplateModify, UserTemplateResponse
+from xmgr.schemas.admin import Admin
+from xmgr.schemas.user_template import UserTemplateCreate, UserTemplateModify, UserTemplateResponse
 
 router = APIRouter(tags=["User Template"], prefix="/api")
 

@@ -6,13 +6,13 @@ import commentjson
 from fastapi import APIRouter, Depends, HTTPException, WebSocket
 from starlette.websockets import WebSocketDisconnect
 
+from config import XRAY_JSON
 from xmgr import xray
-from xmgr.db import Session, get_db
-from xmgr.models.admin import Admin
-from xmgr.models.core import CoreStats
+from xmgr.database import Session, get_db
+from xmgr.schemas.admin import Admin
+from xmgr.schemas.core import CoreStats
 from xmgr.utils import responses
 from xmgr.xray import XRayConfig
-from config import XRAY_JSON
 
 router = APIRouter(tags=["Core"], prefix="/api", responses={401: responses._401})
 

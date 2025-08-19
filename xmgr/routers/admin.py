@@ -4,13 +4,13 @@ from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.exc import IntegrityError
 
+from config import LOGIN_NOTIFY_WHITE_LIST
 from xmgr import xray
-from xmgr.db import Session, crud, get_db
+from xmgr.database import Session, crud, get_db
 from xmgr.dependencies import get_admin_by_username, validate_admin
-from xmgr.models.admin import Admin, AdminCreate, AdminModify, Token
+from xmgr.schemas.admin import Admin, AdminCreate, AdminModify, Token
 from xmgr.utils import report, responses
 from xmgr.utils.jwt import create_admin_token
-from config import LOGIN_NOTIFY_WHITE_LIST
 
 router = APIRouter(tags=["Admin"], prefix="/api", responses={401: responses._401})
 

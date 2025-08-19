@@ -1,8 +1,8 @@
 from datetime import datetime
 
 from xmgr import logger, scheduler, xray
-from xmgr.db import GetDB, crud, get_users
-from xmgr.models.user import UserDataLimitResetStrategy, UserStatus
+from xmgr.database import GetDB, crud, get_users
+from xmgr.schemas.user import UserDataLimitResetStrategy, UserStatus
 
 reset_strategy_to_days = {
     UserDataLimitResetStrategy.day.value: 1,

@@ -6,12 +6,12 @@ from typing import Dict, List, Optional, Union
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from config import XRAY_SUBSCRIPTION_PATH, XRAY_SUBSCRIPTION_URL_PREFIX
 from xmgr import xray
-from xmgr.models.admin import Admin
-from xmgr.models.proxy import ProxySettings, ProxyTypes
+from xmgr.schemas.admin import Admin
+from xmgr.schemas.proxy import ProxySettings, ProxyTypes
 from xmgr.subscription.share import generate_v2ray_links
 from xmgr.utils.jwt import create_subscription_token
-from config import XRAY_SUBSCRIPTION_PATH, XRAY_SUBSCRIPTION_URL_PREFIX
 
 USERNAME_REGEXP = re.compile(r"^(?=\w{3,32}\b)[a-zA-Z0-9-_@.]+(?:_[a-zA-Z0-9-_@.]+)*$")
 

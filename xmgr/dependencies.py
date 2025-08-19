@@ -3,11 +3,11 @@ from typing import Optional, Union
 
 from fastapi import Depends, HTTPException
 
-from xmgr.db import Session, crud, get_db
-from xmgr.models.admin import Admin, AdminInDB, AdminValidationResult
-from xmgr.models.user import UserResponse, UserStatus
-from xmgr.utils.jwt import get_subscription_payload
 from config import SUDOERS
+from xmgr.database import Session, crud, get_db
+from xmgr.schemas.admin import Admin, AdminInDB, AdminValidationResult
+from xmgr.schemas.user import UserResponse, UserStatus
+from xmgr.utils.jwt import get_subscription_payload
 
 
 def validate_admin(db: Session, username: str, password: str) -> Optional[AdminValidationResult]:

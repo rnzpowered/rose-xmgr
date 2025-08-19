@@ -16,9 +16,9 @@ from config import (
     USE_CUSTOM_JSON_FOR_V2RAYNG,
     XRAY_SUBSCRIPTION_PATH,
 )
-from xmgr.db import Session, crud, get_db
+from xmgr.database import Session, crud, get_db
 from xmgr.dependencies import get_validated_sub, validate_dates
-from xmgr.models.user import SubscriptionUserResponse, UserResponse
+from xmgr.schemas.user import SubscriptionUserResponse, UserResponse
 from xmgr.subscription.share import encode_title, generate_subscription
 from xmgr.templates import render_template
 

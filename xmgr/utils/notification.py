@@ -5,9 +5,9 @@ from typing import Type
 
 from pydantic import BaseModel
 
-from xmgr.models.admin import Admin
-from xmgr.models.user import UserResponse
 from config import WEBHOOK_ADDRESS
+from xmgr.schemas.admin import Admin
+from xmgr.schemas.user import UserResponse
 
 queue = deque()
 

@@ -13,10 +13,10 @@ from config import (
     NOTIFY_USER_SUB_REVOKED,
     NOTIFY_USER_UPDATED,
 )
-from xmgr.db import GetDB, Session, create_notification_reminder, get_admin_by_id
-from xmgr.db.models import User, UserStatus
-from xmgr.models.admin import Admin
-from xmgr.models.user import ReminderType, UserResponse
+from xmgr.database import GetDB, Session, create_notification_reminder, get_admin_by_id
+from xmgr.database.models import User, UserStatus
+from xmgr.schemas.admin import Admin
+from xmgr.schemas.user import ReminderType, UserResponse
 from xmgr.utils.notification import (
     Notification,
     ReachedDaysLeft,

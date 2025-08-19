@@ -10,7 +10,8 @@ from sqlalchemy import and_, delete, func, or_
 from sqlalchemy.orm import Query, Session, joinedload
 from sqlalchemy.sql.functions import coalesce
 
-from xmgr.db.models import (
+from config import NOTIFY_DAYS_LEFT, NOTIFY_REACHED_USAGE_PERCENT, USERS_AUTODELETE_DAYS
+from xmgr.database.models import (
     JWT,
     TLS,
     Admin,
@@ -29,10 +30,10 @@ from xmgr.db.models import (
     UserTemplate,
     UserUsageResetLogs,
 )
-from xmgr.models.admin import AdminCreate, AdminModify, AdminPartialModify
-from xmgr.models.node import NodeCreate, NodeModify, NodeStatus, NodeUsageResponse
-from xmgr.models.proxy import ProxyHost as ProxyHostModify
-from xmgr.models.user import (
+from xmgr.schemas.admin import AdminCreate, AdminModify, AdminPartialModify
+from xmgr.schemas.node import NodeCreate, NodeModify, NodeStatus, NodeUsageResponse
+from xmgr.schemas.proxy import ProxyHost as ProxyHostModify
+from xmgr.schemas.user import (
     ReminderType,
     UserCreate,
     UserDataLimitResetStrategy,
@@ -41,9 +42,8 @@ from xmgr.models.user import (
     UserStatus,
     UserUsageResponse,
 )
-from xmgr.models.user_template import UserTemplateCreate, UserTemplateModify
+from xmgr.schemas.user_template import UserTemplateCreate, UserTemplateModify
 from xmgr.utils.helpers import calculate_expiration_days, calculate_usage_percent
-from config import NOTIFY_DAYS_LEFT, NOTIFY_REACHED_USAGE_PERCENT, USERS_AUTODELETE_DAYS
 
 
 def add_default_host(db: Session, inbound: ProxyInbound):

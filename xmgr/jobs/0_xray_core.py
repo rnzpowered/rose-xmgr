@@ -1,10 +1,10 @@
 import time
 import traceback
 
-from xmgr import app, logger, scheduler, xray
-from xmgr.db import GetDB, crud
-from xmgr.models.node import NodeStatus
 from config import JOB_CORE_HEALTH_CHECK_INTERVAL
+from xmgr import app, logger, scheduler, xray
+from xmgr.database import GetDB, crud
+from xmgr.schemas.node import NodeStatus
 from xray_api import exc as xray_exc
 
 

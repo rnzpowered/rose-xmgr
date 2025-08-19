@@ -3,8 +3,8 @@ from logging.config import fileConfig
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
-from xmgr.db.base import Base
 from config import SQLALCHEMY_DATABASE_URL
+from xmgr.database.base import Base
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

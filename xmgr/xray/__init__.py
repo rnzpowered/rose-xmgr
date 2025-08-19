@@ -1,14 +1,14 @@
 from random import randint
 from typing import TYPE_CHECKING, Dict, Sequence
 
-from xmgr.models.proxy import ProxyHostSecurity
+from config import XRAY_ASSETS_PATH, XRAY_EXECUTABLE_PATH, XRAY_JSON
+from xmgr.schemas.proxy import ProxyHostSecurity
 from xmgr.utils.store import DictStorage
 from xmgr.utils.system import check_port
 from xmgr.xray import operations
 from xmgr.xray.config import XRayConfig
 from xmgr.xray.core import XRayCore
 from xmgr.xray.node import XRayNode
-from config import XRAY_ASSETS_PATH, XRAY_EXECUTABLE_PATH, XRAY_JSON
 from xray_api import XRay as XRayAPI
 from xray_api import exceptions, types
 from xray_api import exceptions as exc
@@ -30,12 +30,12 @@ nodes: Dict[int, XRayNode] = {}
 
 
 if TYPE_CHECKING:
-    from xmgr.db.models import ProxyHost
+    from xmgr.database.models import ProxyHost
 
 
 @DictStorage
 def hosts(storage: dict):
-    from xmgr.db import GetDB, crud
+    from xmgr.database import GetDB, crud
 
     storage.clear()
     with GetDB() as db:

@@ -7,10 +7,10 @@ from sqlalchemy.exc import IntegrityError
 from starlette.websockets import WebSocketDisconnect
 
 from xmgr import logger, xray
-from xmgr.db import Session, crud, get_db
+from xmgr.database import Session, crud, get_db
 from xmgr.dependencies import get_dbnode, validate_dates
-from xmgr.models.admin import Admin
-from xmgr.models.node import (
+from xmgr.schemas.admin import Admin
+from xmgr.schemas.node import (
     NodeCreate,
     NodeModify,
     NodeResponse,
@@ -18,7 +18,7 @@ from xmgr.models.node import (
     NodeStatus,
     NodesUsageResponse,
 )
-from xmgr.models.proxy import ProxyHost
+from xmgr.schemas.proxy import ProxyHost
 from xmgr.utils import responses
 
 router = APIRouter(tags=["Node"], prefix="/api", responses={401: responses._401, 403: responses._403})

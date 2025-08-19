@@ -5,10 +5,6 @@ from typing import Any, Dict, List
 from fastapi.encoders import jsonable_encoder
 from requests import Session
 
-from xmgr import app, logger, scheduler
-from xmgr.db import GetDB
-from xmgr.db.models import NotificationReminder
-from xmgr.utils.notification import queue
 from config import (
     JOB_SEND_NOTIFICATIONS_INTERVAL,
     NUMBER_OF_RECURRENT_NOTIFICATIONS,
@@ -16,6 +12,10 @@ from config import (
     WEBHOOK_ADDRESS,
     WEBHOOK_SECRET,
 )
+from xmgr import app, logger, scheduler
+from xmgr.database import GetDB
+from xmgr.database.models import NotificationReminder
+from xmgr.utils.notification import queue
 
 session = Session()
 

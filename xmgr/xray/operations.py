@@ -4,22 +4,22 @@ from typing import TYPE_CHECKING
 from sqlalchemy.exc import SQLAlchemyError
 
 from xmgr import logger, xray
-from xmgr.db import GetDB, crud
-from xmgr.models.node import NodeStatus
-from xmgr.models.user import UserResponse
+from xmgr.database import GetDB, crud
+from xmgr.schemas.node import NodeStatus
+from xmgr.schemas.user import UserResponse
 from xmgr.utils.concurrency import threaded_function
 from xmgr.xray.node import XRayNode
 from xray_api import XRay as XRayAPI
 from xray_api.types.account import Account, XTLSFlows
 
 if TYPE_CHECKING:
-    from xmgr.db import User as DBUser
-    from xmgr.db.models import Node as DBNode
+    from xmgr.database import User as DBUser
+    from xmgr.database.models import Node as DBNode
 
 
 @lru_cache(maxsize=None)
 def get_tls():
-    from xmgr.db import GetDB, get_tls_certificate
+    from xmgr.database import GetDB, get_tls_certificate
 
     with GetDB() as db:
         tls = get_tls_certificate(db)

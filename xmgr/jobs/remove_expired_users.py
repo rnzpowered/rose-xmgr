@@ -1,10 +1,10 @@
 import logging
 
-from xmgr import logger, scheduler
-from xmgr.db import GetDB, crud
-from xmgr.models.admin import Admin
-from xmgr.utils import report
 from config import USER_AUTODELETE_INCLUDE_LIMITED_ACCOUNTS
+from xmgr import logger, scheduler
+from xmgr.database import GetDB, crud
+from xmgr.schemas.admin import Admin
+from xmgr.utils import report
 
 SYSTEM_ADMIN = Admin(username="system", is_sudo=True, telegram_id=None, discord_webhook=None)
 

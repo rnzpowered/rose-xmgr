@@ -9,12 +9,12 @@ from typing import Union
 import commentjson
 from sqlalchemy import func
 
-from xmgr.db import GetDB
-from xmgr.db import models as db_models
-from xmgr.models.proxy import ProxyTypes
-from xmgr.models.user import UserStatus
-from xmgr.utils.crypto import get_cert_SANs
 from config import DEBUG, XRAY_EXCLUDE_INBOUND_TAGS, XRAY_FALLBACKS_INBOUND_TAG
+from xmgr.database import GetDB
+from xmgr.database import models as db_models
+from xmgr.schemas.proxy import ProxyTypes
+from xmgr.schemas.user import UserStatus
+from xmgr.utils.crypto import get_cert_SANs
 
 
 def merge_dicts(a, b):  # B will override A dictionary key and values

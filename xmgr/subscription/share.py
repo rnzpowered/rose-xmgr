@@ -14,7 +14,7 @@ from xmgr.utils.system import get_public_ip, get_public_ipv6, readable_size
 from . import *
 
 if TYPE_CHECKING:
-    from xmgr.models.user import UserResponse
+    from xmgr.schemas.user import UserResponse
 
 from config import (
     ACTIVE_STATUS_TEXT,
@@ -151,7 +151,7 @@ def format_time_left(seconds_left: int) -> str:
 
 
 def setup_format_variables(extra_data: dict) -> dict:
-    from xmgr.models.user import UserStatus
+    from xmgr.schemas.user import UserStatus
 
     user_status = extra_data.get("status")
     expire_timestamp = extra_data.get("expire")

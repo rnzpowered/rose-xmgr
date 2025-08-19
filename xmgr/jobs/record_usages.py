@@ -9,14 +9,14 @@ from sqlalchemy import and_, bindparam, insert, select, update
 from sqlalchemy.orm import Session
 from sqlalchemy.sql.dml import Insert
 
-from xmgr import scheduler, xray
-from xmgr.db import GetDB
-from xmgr.db.models import Admin, NodeUsage, NodeUserUsage, System, User
 from config import (
     DISABLE_RECORDING_NODE_USAGE,
     JOB_RECORD_NODE_USAGES_INTERVAL,
     JOB_RECORD_USER_USAGES_INTERVAL,
 )
+from xmgr import scheduler, xray
+from xmgr.database import GetDB
+from xmgr.database.models import Admin, NodeUsage, NodeUserUsage, System, User
 from xray_api import XRay as XRayAPI
 from xray_api import exc as xray_exc
 
