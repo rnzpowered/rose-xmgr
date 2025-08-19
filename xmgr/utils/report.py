@@ -105,7 +105,9 @@ def data_usage_percent_reached(
 ) -> None:
     if not NOTIFY_IF_DATA_USAGE_PERCENT_REACHED:
         return
+
     notify(ReachedUsagePercent(username=user.username, user=user, used_percent=percent))
+
     create_notification_reminder(
         db,
         ReminderType.data_usage,
